@@ -3,12 +3,12 @@
 class Strategy
 {
 protected:
-	typedef double(*function)(double x); //задание типа function
+	typedef double(*function)(double x); //Г§Г Г¤Г Г­ГЁГҐ ГІГЁГЇГ  function
 
 public:
 
 	Strategy() = default;
-	virtual double get_result(const double _start, const double _end, const double _eps, function _f) const = 0; // eps - погрешность
+	virtual double get_result(const double _start, const double _end, const double _eps, function _f) const = 0; // eps - ГЇГ®ГЈГ°ГҐГёГ­Г®Г±ГІГј
 	virtual ~Strategy() = default;
 };
 
@@ -58,10 +58,10 @@ private:
 
 public:
 	Newton_method(function _df) : df(_df) {};
-	void get_fd(function& _df)
-	{
-		df = _df;
-	}
+	//void get_fd(function& _df)
+	//{
+		//df = _df;
+	//}
 	double get_result(const double _start, const double _end, const double _eps, function _f) const override
 	{
 		double x0 = (_start + _end) / 2;
