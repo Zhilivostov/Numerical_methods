@@ -9,10 +9,8 @@ double df(double x) { return 2*x - 4; }
 
 TEST(Chord_method, Test)
 {
-	auto meth = Chord_method();
-	//auto res = Decision();
-	auto res = Decision(meth);
-	//res.set_strategy(meth);
+	auto res = Decision();
+	res.set_strategy(std::make_unique<Chord_method>());
 	double a = 2;
 	double b = 5;
 	double eps = 0.0001;
@@ -22,10 +20,8 @@ TEST(Chord_method, Test)
 
 TEST(Bisector_method, Test)
 {
-	auto meth = Bisector_method();
-	//auto res = Decision();
-	auto res = Decision(meth);
-	//res.set_strategy(meth);
+	auto res = Decision();
+	res.set_strategy(std::make_unique<Bisector_method>());
 	double a = 2;
 	double b = 5;
 	double eps = 0.0001;
@@ -35,10 +31,8 @@ TEST(Bisector_method, Test)
 
 TEST(Newton_method, Test)
 {
-	auto meth = Newton_method();
-	//auto res1 = Decision();
-	auto res = Decision(meth);
-	res.set_strategy(meth);
+	auto res = Decision();
+	res.set_strategy(std::make_unique<Newton_method>());
 	double a = 2;
 	double b = 5;
 	double eps = 0.0001;
@@ -48,42 +42,30 @@ TEST(Newton_method, Test)
 
 TEST(Chord_method, Test_throw)
 {
-	auto meth = Chord_method();
-	//auto res = Decision();
-	auto res = Decision(meth);
-	//res.set_strategy(meth);
+	auto res = Decision();
+	res.set_strategy(std::make_unique<Chord_method>());
 	double a = 12;
 	double b = 15;
 	double eps = 0.0001;
-	//double answer = res.get_answer(a, b, eps, f, 0);
-	//EXPECT_TRUE(fabs(3 - answer) < eps);
-	EXPECT_NO_THROW(res.get_answer(a, b, eps, f, 0));
+	EXPECT_ANY_THROW(res.get_answer(a, b, eps, f, 0));
 }
 
 TEST(Bisector_method, Test_throw)
 {
-	auto meth = Bisector_method();
-	//auto res = Decision();
-	auto res = Decision(meth);
-	//res.set_strategy(meth);
+	auto res = Decision();
+	res.set_strategy(std::make_unique<Bisector_method>());
 	double a = 12;
 	double b = 15;
 	double eps = 0.0001;
-	//double answer = res.get_answer(a, b, eps, f, 0);
-	//EXPECT_TRUE(fabs(3 - answer) < eps);
-	EXPECT_NO_THROW(res.get_answer(a, b, eps, f, 0));
+	EXPECT_ANY_THROW(res.get_answer(a, b, eps, f, 0));
 }
 
 TEST(Newton_method, Test_throw)
 {
-	auto meth = Newton_method();
-	//auto res = Decision();
-	auto res = Decision(meth);
-	//res.set_strategy(meth);
+	auto res = Decision();
+	res.set_strategy(std::make_unique<Newton_method>());
 	double a = 12;
 	double b = 15;
 	double eps = 0.0001;
-	//double answer = res.get_answer(a, b, eps, f, df);
-	//EXPECT_TRUE(fabs(3 - answer) < eps);
-	EXPECT_NO_THROW(res.get_answer(a, b, eps, f, df));
+	EXPECT_ANY_THROW(res.get_answer(a, b, eps, f, df));
 }
